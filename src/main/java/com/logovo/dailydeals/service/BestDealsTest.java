@@ -1,4 +1,4 @@
-package service;
+package com.logovo.dailydeals.service;
 
 import com.logovo.dailydeals.dao.Restaurant;
 import org.junit.Test;
