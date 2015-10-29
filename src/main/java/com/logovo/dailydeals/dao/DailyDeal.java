@@ -26,23 +26,29 @@ import java.math.BigDecimal;
  */
 public class DailyDeal {
 
-    private String Name;
+    private String name;
     private BigDecimal price;
     private BigDecimal normalPrice;
 
     public DailyDeal(String inName, BigDecimal inPrice, BigDecimal inNormalPrice){
-        this.Name=inName;
-        this.price=inPrice;
-        this.normalPrice=inNormalPrice;
+        if(inPrice == null || inPrice.compareTo(BigDecimal.ZERO) == 1) {
+            throw new IllegalArgumentException("Discount price cannot be ZERO or less than ZERO");
+        }
+        else if(inNormalPrice == null || inNormalPrice.compareTo(BigDecimal.ZERO) == 1) {
+            throw new IllegalArgumentException("Normal price cannot be ZERO");
+        }
 
+        this.name = inName;
+        this.price = inPrice;
+        this.normalPrice = inNormalPrice;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public BigDecimal getPrice() {
@@ -60,24 +66,11 @@ public class DailyDeal {
     public void setNormalPrice(BigDecimal normalPrice) {
         this.normalPrice = normalPrice;
     }
-    public BigDecimal getCallculatePrice1(BigDecimal price , BigDecimal normalPrice){
-        this.price = price;
-        this.normalPrice = normalPrice;
-
-        BigDecimal result = BigDecimal.valueOf(100).subtract((this.getPrice().divide(this.getNormalPrice(), 2, BigDecimal.ROUND_HALF_EVEN).multiply(BigDecimal.valueOf(100))));
-//        BigDecimal result = (this.getPrice().divide(this.getNormalPrice()));
-
-        return result;
-    }
-
-
-
-
 
     @Override
     public String toString() {
         return "DailyDeal{" +
-                "Name='" + Name + '\'' +
+                "name='" + name + '\'' +
                 ", price=" + price +
                 ", normalPrice=" + normalPrice +
                 '}';

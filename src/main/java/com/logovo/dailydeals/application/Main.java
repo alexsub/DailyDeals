@@ -36,9 +36,9 @@ class Main {
         System.out.println(dailyDealList.size());
         dailyDealList.size();
 
-        BigDecimal bg = dl1.getCallculatePrice1(dl1.getPrice(), dl1.getNormalPrice());
+//        BigDecimal bg = dl1.getCallculatePrice1(dl1.getPrice(), dl1.getNormalPrice());
 
-        System.out.println(bg);
+//        System.out.println(bg);
         for(DailyDeal item : dailyDealList){
             System.out.println(item);
         }
