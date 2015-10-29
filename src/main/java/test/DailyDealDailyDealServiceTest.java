@@ -19,7 +19,7 @@ public class DailyDealDailyDealServiceTest {
     @Test
     public void bestDealCallculateTest(){
 
-        DailyDeal dl1 = new DailyDeal("Fisha", BigDecimal.valueOf(0), BigDecimal.valueOf(10));
+        DailyDeal dl1 = new DailyDeal("Fisha", BigDecimal.valueOf(1), BigDecimal.valueOf(10));
         DailyDeal dl2 = new DailyDeal("Hrjuwa", BigDecimal.valueOf(2), BigDecimal.valueOf(8));
         DailyDeal dl3 = new DailyDeal("Kartowa", BigDecimal.valueOf(6), BigDecimal.valueOf(12));
         DailyDeal dl4 = new DailyDeal("Hlebuwa", BigDecimal.valueOf(8), BigDecimal.valueOf(10));

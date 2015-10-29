@@ -31,10 +31,10 @@ public class DailyDeal {
     private BigDecimal normalPrice;
 
     public DailyDeal(String inName, BigDecimal inPrice, BigDecimal inNormalPrice){
-        if(inPrice == null || inPrice.compareTo(BigDecimal.ZERO) == 1) {
+        if(inPrice == null || inPrice.compareTo(BigDecimal.ZERO) != 1) {
             throw new IllegalArgumentException("Discount price cannot be ZERO or less than ZERO");
         }
-        else if(inNormalPrice == null || inNormalPrice.compareTo(BigDecimal.ZERO) == 1) {
+        if(inNormalPrice == null || inNormalPrice.compareTo(BigDecimal.ZERO) != 1) {
             throw new IllegalArgumentException("Normal price cannot be ZERO");
         }
 
