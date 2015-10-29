@@ -1,7 +1,9 @@
 package com.logovo.dailydeals.service;
 
+import com.logovo.dailydeals.dao.DailyDeal;
 import com.logovo.dailydeals.dao.Restaurant;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -25,28 +27,70 @@ import java.util.List;
  */
 
 
-public class Service {
+public class DailyDealService {
+
+ public String bestDeal(List<Restaurant> restaurants){
+
+  return "slha";
+ }
+
+ public BigDecimal callculatePrice1(DailyDeal dl){
+  BigDecimal price = dl.getPrice();
+  BigDecimal normalPrice = dl.getNormalPrice();
+
+  BigDecimal result = BigDecimal.valueOf(100).subtract(price.divide(normalPrice,2,BigDecimal.ROUND_HALF_EVEN).multiply(BigDecimal.valueOf(100)));
+//  BigDecimal result = price.divide(normalPrice,3,BigDecimal.ROUND_HALF_EVEN);
+  return result;
+ }
+
+ public BigDecimal callculateBest(List<DailyDeal> dailyDeals){
+  DailyDealService dailyDealService = new DailyDealService();
+  BigDecimal check= BigDecimal.valueOf(0);
+  BigDecimal bg=null;
+  DailyDeal dl=null;
 
 
-//    Restaurant restik1 = new Restaurant();
-//    Restaurant restik2 = new Restaurant();
-//    Restaurant restik3 = new Restaurant();
-//    DailyDeal dl1 = new DailyDeal("Fisha", BigDecimal.valueOf(5), BigDecimal.valueOf(10));
-//    DailyDeal dl2 = new DailyDeal("Hrjuwa", BigDecimal.valueOf(2), BigDecimal.valueOf(7));
-//    DailyDeal dl3 = new DailyDeal("Kartowa", BigDecimal.valueOf(6), BigDecimal.valueOf(12));
-//    DailyDeal dl4 = new DailyDeal("Hlebuwa", BigDecimal.valueOf(8), BigDecimal.valueOf(10));
-//    DailyDeal dl5 = new DailyDeal("Kelbas", BigDecimal.valueOf(5), BigDecimal.valueOf(9));
-//    DailyDeal dl6 = new DailyDeal("Zhuljen", BigDecimal.valueOf(4), BigDecimal.valueOf(13));
+  for(DailyDeal deal : dailyDeals) {
+//       DailyDeal prev = dailyDeals.
+   bg = dailyDealService.callculatePrice1(deal);
+   int res = bg.compareTo(check);
+   if(res==1){
+    check=bg;
+    dl=deal;
+   }
+//       check=bg;
 
 
 
+   System.out.println(dailyDealService.callculatePrice1(deal)+"% Dlja deal "+deal);
 
-    public String bestDeal(List<Restaurant> restaurants){
+
+  }
+  System.out.println(dl+" "+check);
+  return check;
+ }
+
+ public DailyDeal callculateBestDeal(List<DailyDeal> dailyDeals){
+  DailyDealService dailyDealService = new DailyDealService();
+  BigDecimal check= BigDecimal.valueOf(0);
+  BigDecimal bg=null;
+  DailyDeal dl=null;
+
+  for(DailyDeal deal : dailyDeals) {
+   bg = dailyDealService.callculatePrice1(deal);
+   int res = bg.compareTo(check);
+   if(res==1){
+    check=bg;
+    dl=deal;
+   }
+
+   System.out.println(dailyDealService.callculatePrice1(deal)+"% Dlja deal "+deal);
 
 
-        return "slha";
+  }
+  System.out.println(dl+" "+check);
 
-    }
-
+  return dl;
+ }
 
 }
