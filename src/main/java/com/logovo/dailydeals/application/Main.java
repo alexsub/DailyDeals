@@ -26,7 +26,11 @@ class Main {
             dailyDealList.add(dl1);
             dailyDealList.add(dl2 = new DailyDeal("Hrjuwa", BigDecimal.valueOf(2), BigDecimal.valueOf(7)));
         System.out.println(dailyDealList.size());
-        dailyDealList.size()
+        dailyDealList.size();
+
+
+        dailyDealList.size();
+        dailyDealList.size();
 
     }
 
