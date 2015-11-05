@@ -26,6 +26,25 @@ import java.util.Map;
  Запуште ваш проект в новый репозиторий на гитхабе.
  */
 public class Restaurant {
+    @Override
+    public String toString() {
+        return "Restaurant{" +
+                "name='" + name + '\'' +
+                ", dailyDeals=" + dailyDeals +
+                '}';
+    }
+
+    public Restaurant(){
+
+    }
+    public Restaurant(String name){
+        this.name = name;
+    }
+    public Restaurant(String name, HashMap<Day, List <DailyDeal>> dayListHashMap ){
+        this.name = name;
+        this.dailyDeals = dayListHashMap;
+
+    }
 
     public List getAdministrator() {
         return administrator;
@@ -47,6 +66,10 @@ public class Restaurant {
 
     private List administrator;
     private String name;
+
+    public void setDayDeals(Day d, List<DailyDeal> dailyDeals){
+
+    }
 
     public Map getDailyDeals() {
         return dailyDeals;

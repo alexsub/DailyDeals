@@ -1,10 +1,13 @@
 package com.logovo.dailydeals.service;
 
 import com.logovo.dailydeals.dao.DailyDeal;
+import com.logovo.dailydeals.dao.Day;
 import com.logovo.dailydeals.dao.Restaurant;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by vagrant on 10/22/15.
@@ -29,9 +32,22 @@ import java.util.List;
 
 public class DailyDealService {
 
-    public String bestDeal(List<Restaurant> restaurants) {
+    public String findBestDeal(List<Restaurant> restaurants) {
+            String str = "";
+            DailyDealService service = new DailyDealService();
+            Map dailyDeals;
+            dailyDeals = restaurants.get(1).getDailyDeals();
+            dailyDeals.get(Day.MONDAY);
+            List<DailyDeal> dailyDealList = new ArrayList<DailyDeal>();
+        dailyDealList = (List<DailyDeal>) dailyDeals.get(Day.TUESDAY);
+//            System.out.println(dailyDeals.get(Day.MONDAY));
+            DailyDeal bestDeal;
+            bestDeal =  service.callculateBestDeal(dailyDealList);
+//        System.out.println(bestDeal.getName());
+            str = bestDeal.getName();
+//        System.out.println(str);
 
-        return "slha";
+        return str;
     }
 
     public BigDecimal callculatePrice1(DailyDeal dl) {
@@ -78,10 +94,10 @@ public class DailyDealService {
                 dl = deal;
             }
 
-            System.out.println(dailyDealService.callculatePrice1(deal) + "% Dlja deal " + deal);
+//            System.out.println(dailyDealService.callculatePrice1(deal) + "% Dlja deal " + deal);
 
         }
-        System.out.println(dl + " " + check);
+//        System.out.println(dl + " " + check);
 
         return dl;
     }
